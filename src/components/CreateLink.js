@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 
-// mutation
-
+// TODO: add postedBy
 const POST_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {
     post(description: $description, url: $url) {
@@ -19,9 +18,11 @@ export default class CreateLink extends Component {
   state = {
     description: "",
     url: ""
+    // postedBy: ""
   };
 
   render() {
+    // const { description, url, postedBy } = this.state;
     const { description, url } = this.state;
     return (
       <div>
@@ -43,6 +44,7 @@ export default class CreateLink extends Component {
         </div>
         <Mutation
           mutation={POST_MUTATION}
+          // variables={{ description, url, postedBy }}
           variables={{ description, url }}
           onCompleted={() => this.props.history.push("/")}
         >
