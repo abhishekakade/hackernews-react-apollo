@@ -3,17 +3,22 @@ import React, { Component } from "react";
 import "../styles/App.css";
 import LinkList from "./LinkList";
 import CreateLink from "./CreateLink";
+import Header from "./Header";
+import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="" style={{ textAlign: "center" }}>
-        <h1>GraphQL + React</h1>
-        <h2>How to GraphQL</h2>
-        <h3>List of Links</h3>
-        <LinkList />
-        <h3>Add new Link</h3>
-        <CreateLink />
+      <div className="center w85">
+        <h1>React + GraphQL</h1>
+        <h2>Hacker News Clone</h2>
+        <Header />
+        <div className="ph3 pv1 background-gray">
+          <Switch>
+            <Route exact path="/" component={LinkList} />
+            <Route exact path="/create" component={CreateLink} />
+          </Switch>
+        </div>
       </div>
     );
   }
